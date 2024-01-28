@@ -57,8 +57,18 @@ async function defineRoutes() {
     res.send(product);
   });
 
-  // More routes...
-
+  // Delete One Product
+  app.delete("/products/:id", async (req, res) => {
+    const id = req.params.id;
+    const result = await productCollection.deleteOne({ _id: ObjectId(id) });
+    res.send(result);
+  });
+  // Edit Products
+  app.put("/products/:id", async (req, res) => {
+    const id = req.params.id;
+    const result = await productCollection.updateOne({ _id: ObjectId(id) });
+    res.send(result);
+  });
   // Set User
   app.post("/user", async (req, res) => {
     const user = req.body;
@@ -82,7 +92,7 @@ async function defineRoutes() {
 
   // Start the server after connecting to MongoDB
   app.get("/", (req, res) => {
-    res.send("Cam-sec server successfully running");
+    res.send("Gift Shop server successfully running");
   });
 
   app.listen(port, () => {

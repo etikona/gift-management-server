@@ -30,7 +30,7 @@ async function connectToMongoDB() {
 // Define your routes and other functionalities that use the MongoDB connection
 
 // Connect to MongoDB and define routes
-connectToMongoDB().then(defineRoutes);
+
 app.listen(port, () => {
   console.log("Server running on", port);
 });
